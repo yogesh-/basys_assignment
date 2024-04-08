@@ -2,19 +2,20 @@ const express = require("express");
 const { Pool } = require("pg");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 const pool = new Pool({
-  user: "postgres",
-  host: "database-11.cdyakeu0gxj9.us-east-1.rds.amazonaws.com",
-  database: "postgres",
-  password: "basysai123",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB,
+  password: process.env.DB_PSWD,
+  port: process.env.DB_PORT,
 });
 
 // Login
@@ -184,4 +185,8 @@ app.get("/getPayerData", async (req, res) => {
     console.error("Error fetching providerData:", error);
     res.status(500).json({ error: "Error fetching providerData" });
   }
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
