@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 const Logs = () => {
+  const baseUrl = JSON.stringify(import.meta.env.VITE_REACT_API_URL);
+
   const [providerData, setProviderData] = useState([]);
   const [payerData, setPayerData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const providerResponse = await fetch(
-          "http://localhost:3000/getProviderData"
-        );
-        const payerResponse = await fetch("http://localhost:3000/getPayerData");
+        const providerResponse = await fetch(`${baseUrl}/getProviderData`);
+        const payerResponse = await fetch(`${baseUrl}/getPayerData`);
         if (!providerResponse.ok) {
           throw new Error("Failed to fetch data");
         }

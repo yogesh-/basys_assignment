@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const PayerForm = () => {
+  const baseUrl = JSON.stringify(import.meta.env.VITE_REACT_API_URL);
+
   const [sameAddress, setSameAddress] = useState(true);
   const {
     register,
@@ -12,7 +14,7 @@ const PayerForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/addPayer", {
+      const response = await fetch(`${baseUrl}/addPayer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

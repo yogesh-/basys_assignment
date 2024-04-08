@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  // const baseUrl = process.env.VITE_REACT_API_URL;
+  const baseUrl = JSON.stringify(import.meta.env.VITE_REACT_API_URL);
   const navigateTo = useNavigate();
 
   const {
@@ -14,7 +16,7 @@ const Home = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch(`${baseUrl}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
