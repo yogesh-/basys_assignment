@@ -27,3 +27,7 @@ The software is built using the MERN(Postgres instead of MongoDB) stack:
 PostgresDB from AWS RDS was used for data storage during development and testing. Both frontend and backend were developed and functionally tested on local machine.
 
 ## DEMO VIDEO
+https://github.com/yogesh-/basys_assignment/assets/7193961/4440af58-08f1-4f54-a839-7abc13ca1647
+
+
+
