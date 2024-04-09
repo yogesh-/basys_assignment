@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const PayerForm = () => {
-  const baseUrl = JSON.stringify(import.meta.env.VITE_REACT_API_URL);
+  const baseUrl = import.meta.env.VITE_REACT_API_URL;
 
   const [sameAddress, setSameAddress] = useState(true);
   const {
@@ -45,7 +45,7 @@ const PayerForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-100 shadow-md">
+    <div className="max-w-md mx-auto p-6  bg-gray-300 shadow-md">
       <h2 className="text-xl font-semibold mb-4">Add all payer details</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -129,31 +129,33 @@ const PayerForm = () => {
             <span className="text-red-500">Invalid email format</span>
           )}
 
-          <select
-            {...register("gender", { required: true })}
-            className="w-full mb-2"
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          {errors.gender && (
-            <span className="text-red-500">Gender is required</span>
-          )}
+          <div className="flex flex-row gap-2">
+            <select
+              {...register("gender", { required: true })}
+              className="w-full mb-2"
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            {errors.gender && (
+              <span className="text-red-500">Gender is required</span>
+            )}
 
-          <select
-            {...register("access", { required: true })}
-            className="w-full mb-2"
-          >
-            <option value="">Select Access Rights</option>
-            <option value="admin">Admin</option>
-            <option value="regular_user">Regular User</option>
-            <option value="read_only">Read Only</option>
-          </select>
-          {errors.access && (
-            <span className="text-red-500">Access rights is required</span>
-          )}
+            <select
+              {...register("access", { required: true })}
+              className="w-full mb-2"
+            >
+              <option value="">Select Access Rights</option>
+              <option value="admin">Admin</option>
+              <option value="regular_user">Regular User</option>
+              <option value="read_only">Read Only</option>
+            </select>
+            {errors.access && (
+              <span className="text-red-500">Access rights is required</span>
+            )}
+          </div>
         </div>
 
         {/* Entity Details */}

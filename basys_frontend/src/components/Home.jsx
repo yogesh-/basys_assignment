@@ -1,25 +1,31 @@
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
-  const baseUrl = JSON.stringify(import.meta.env.VITE_REACT_API_URL);
+  const baseUrl = import.meta.env.VITE_REACT_API_URL;
 
   const [payer, setPayer] = useState(0);
   const [provider, setProvider] = useState(0);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const payerResponse = await fetch(`${baseUrl}/getPayerData`);
-        const providerResponse = await fetch(`${baseUrl}/getProviderData`);
-        if (!payerResponse.ok) {
+        const [payerResponse, providerResponse] = await Promise.all([
+          fetch(`${baseUrl}/getPayerData`),
+          fetch(`${baseUrl}/getProviderData`),
+        ]);
+
+        if (!payerResponse.ok || !providerResponse.ok) {
           throw new Error("Failed to fetch data");
         }
-        if (!providerResponse.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data1 = await payerResponse.json();
-        const payerCount = data1.length;
-        const data2 = await providerResponse.json();
-        const providerCount = data2.length;
+
+        const [payerData, providerData] = await Promise.all([
+          payerResponse.json(),
+          providerResponse.json(),
+        ]);
+
+        const payerCount = payerData.length;
+        const providerCount = providerData.length;
+
         setPayer(payerCount);
         setProvider(providerCount);
       } catch (error) {
@@ -28,7 +34,7 @@ const Home = () => {
     };
 
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="h-4/5 flex flex-row justify-center items-center gap-4">
