@@ -17,7 +17,7 @@ The software is built using the MERN(Postgres instead of MongoDB) stack:
 -	Database: Postgres
 -	Styling: Tailwind CSS
 
-## Tools used
+## Other Tools/Packages used
 - bcrypt - to encrypt and ensure secure storage and transmission.
 - nodemailer - to send transactional or notification emails
 - Ethereal email - email SMTP provider
