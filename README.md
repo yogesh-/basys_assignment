@@ -26,6 +26,20 @@ The software is built using the MERN(Postgres instead of MongoDB) stack:
 ## Deployment:
 PostgresDB from AWS RDS was used for data storage during development and testing. Both frontend and backend were developed and functionally tested on local machine.
 
+## How to run this locally
+
+Clone the repository to your local machine and:
+
+For Frontend:  
+`cd basys_frontend`  
+`npm run dev`
+
+For Backend:  
+`cd basys_backend`  
+`npm start`
+
+  
+
 ## DEMO VIDEO
 https://github.com/yogesh-/basys_assignment/assets/7193961/4440af58-08f1-4f54-a839-7abc13ca1647
 
