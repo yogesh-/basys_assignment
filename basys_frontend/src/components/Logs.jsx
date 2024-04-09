@@ -71,6 +71,7 @@ const Logs = () => {
                   <p>
                     Point of Contact: {item.firstname + " " + item.lastname}
                   </p>
+                  <p>Status: {item.status}</p>
                 </div>
               )}
             </li>
@@ -87,7 +88,7 @@ const Logs = () => {
                   <p>
                     Point of Contact: {item.firstname + " " + item.lastname}
                   </p>
-                  <p>Status:</p>
+                  <p>Status: {item.status}</p>
                 </div>
               )}
             </li>
